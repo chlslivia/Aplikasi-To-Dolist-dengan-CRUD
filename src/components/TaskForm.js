@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
 const TaskForm = ({ show, handleClose, addTask, editTask, taskToEdit }) => {
-  // Menggunakan taskToEdit untuk initial state, jika null, gunakan nilai default
+ 
   const [task, setTask] = useState(
     taskToEdit || { name: '', priority: 'Medium', status: 'To Do' }
   );
 
-  // Sinkronisasi state form dengan taskToEdit ketika berubah (untuk reset atau edit data)
   React.useEffect(() => {
     setTask(taskToEdit || { name: '', priority: 'Medium', status: 'To Do' });
   }, [taskToEdit]);
@@ -19,7 +18,7 @@ const TaskForm = ({ show, handleClose, addTask, editTask, taskToEdit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Validasi sederhana
+
     if (!task.name.trim()) {
       alert("Nama tugas tidak boleh kosong!");
       return;
@@ -30,7 +29,7 @@ const TaskForm = ({ show, handleClose, addTask, editTask, taskToEdit }) => {
     } else {
       addTask(task);
     }
-    // handleClose dipanggil di App.js setelah editTask/addTask
+
   };
 
   return (
@@ -40,7 +39,7 @@ const TaskForm = ({ show, handleClose, addTask, editTask, taskToEdit }) => {
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
-          {/* Form Group - Task Name */}
+
           <Form.Group controlId="formTaskName" className="mb-3">
             <Form.Label>Task Name</Form.Label>
             <Form.Control
@@ -52,7 +51,7 @@ const TaskForm = ({ show, handleClose, addTask, editTask, taskToEdit }) => {
             />
           </Form.Group>
 
-          {/* Form Group - Priority */}
+
           <Form.Group controlId="formTaskPriority" className="mb-3">
             <Form.Label>Priority</Form.Label>
             <Form.Control 
@@ -67,7 +66,7 @@ const TaskForm = ({ show, handleClose, addTask, editTask, taskToEdit }) => {
             </Form.Control>
           </Form.Group>
 
-          {/* Form Group - Status */}
+
           <Form.Group controlId="formTaskStatus" className="mb-3">
             <Form.Label>Status</Form.Label>
             <Form.Control 
