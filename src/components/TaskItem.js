@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, Badge, Button, Row, Col, Form } from 'react-bootstrap'; // Import Form
-import { Trash, Edit3 } from 'react-feather'; // Ikon dari react-feather
+import { Card, Badge, Button, Row, Col, Form } from 'react-bootstrap'; 
+import { Trash, Edit3 } from 'react-feather'; 
 
 const TaskItem = ({ task, deleteTask, showEditForm }) => {
   
@@ -22,11 +22,11 @@ const TaskItem = ({ task, deleteTask, showEditForm }) => {
     }
   };
 
-  // Fungsi untuk menandai tugas selesai
+
   const handleToggleDone = () => {
-    // Jika belum Done, set status menjadi Done. Jika sudah, kembalikan ke To Do.
+
     const newStatus = task.status === 'Done' ? 'To Do' : 'Done';
-    // Gunakan showEditForm untuk meng-update state di App.js
+
     showEditForm({ ...task, status: newStatus });
   };
 
@@ -35,13 +35,13 @@ const TaskItem = ({ task, deleteTask, showEditForm }) => {
       <Card.Body>
         <Row className="align-items-center">
           
-          {/* Nama Tugas */}
+
           <Col md={3} className="fw-bold">
             <span className="text-muted d-block small mb-1">Task</span>
             {task.name}
           </Col>
 
-          {/* Prioritas */}
+
           <Col md={2} className="text-center">
             <span className="text-muted d-block small mb-1">Priority</span>
             <Badge bg={getPriorityVariant(task.priority)} className="py-2 px-3 rounded-pill">
@@ -49,7 +49,7 @@ const TaskItem = ({ task, deleteTask, showEditForm }) => {
             </Badge>
           </Col>
 
-          {/* Status */}
+
           <Col md={2} className="text-center">
             <span className="text-muted d-block small mb-1">Status</span>
             <Badge bg={getStatusVariant(task.status)} className="py-2 px-3 rounded-pill">
@@ -57,21 +57,21 @@ const TaskItem = ({ task, deleteTask, showEditForm }) => {
             </Badge>
           </Col>
           
-          {/* Radio Button (Tandai Selesai) */}
+
           <Col md={2} className="text-center">
             <Form.Check 
               type="radio" 
               checked={task.status === 'Done'}
               onChange={handleToggleDone}
               className="mt-2"
-              // Styling kustom untuk radio button agar terlihat lebih besar
+
               style={{ transform: 'scale(1.2)' }}
             />
           </Col>
 
-          {/* Aksi */}
+ 
           <Col md={3} className="text-end">
-            {/* Tombol Edit */}
+
             <Button 
               variant="outline-primary" 
               size="sm" 
@@ -81,7 +81,7 @@ const TaskItem = ({ task, deleteTask, showEditForm }) => {
               <Edit3 size={18} />
             </Button>
 
-            {/* Tombol Delete */}
+
             <Button 
               variant="outline-danger" 
               size="sm" 
